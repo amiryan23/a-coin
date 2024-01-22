@@ -1,0 +1,71 @@
+.megaContainer {
+	width:100%;
+	height:auto;
+	display:flex;
+	flex-direction:column;
+	gap:30px;
+	padding:10px;
+
+}
+
+.content1{
+	align-self:center;
+	color:darkorange;
+
+	user-select: none;
+	font-family:monospace;
+	font-size:25px;
+/*	letter-spacing:2px;*/
+	/*color: transparent; 
+	background-clip: text;
+background-image: linear-gradient(to right, red, fuchsia);
+*/
+}
+
+/*.content1 h3{
+	color: transparent; 
+	background-clip: text;
+background-image: linear-gradient(to right, red, fuchsia);
+}
+*/
+.content2 {
+	align-self:center;
+	display:flex;
+	flex-direction:row;
+	gap:10px;
+	font-weight:bold;
+}
+
+.content2 svg {
+	align-self:center;
+	color:goldenrod;
+	font-size:23px;
+}
+
+.content2 h2 {
+	align-self:center;
+	font-size:17px;
+	color:whitesmoke;
+	user-select: none;
+}
+
+.content3 {
+	align-self:center;
+}
+
+.content3 svg {
+	font-size:200px;
+	color:goldenrod;
+	filter:drop-shadow(1px 1px 15px #999);
+	 -webkit-filter: drop-shadow(1px 1px 15px #999);
+  -moz-filter:  drop-shadow(1px 1px 15px #999);
+  -ms-filter:  drop-shadow(1px 1px 15px #999);
+  -o-filter: drop-shadow(1px 1px 15px #999);
+	cursor:pointer;
+}
+
+.animCoin {
+	transform:scale(1.5);
+	transition:350ms;
+	user-select:none;
+}
