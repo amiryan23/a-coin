@@ -6,3 +6,10 @@
   justify-content:center;
 }
 
+@media screen and (max-width:768px) {
+  .App {
+      justify-content:start;
+      height:auto;
+      padding:20px;
+  }
+}

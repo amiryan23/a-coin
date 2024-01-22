@@ -10,7 +10,8 @@
 
 .content1{
 	align-self:center;
-	color:darkorange;
+/*	color:darkorange;*/
+color:lightgoldenrodyellow;
 
 	user-select: none;
 	font-family:monospace;
@@ -64,8 +65,38 @@ background-image: linear-gradient(to right, red, fuchsia);
 	cursor:pointer;
 }
 
+.miniContent3 {
+/*	font-size:39px;*/
+/*	height:210px;*/
+	align-self:center;
+	font-weight:bold;
+	font-family:monospace;
+	color:goldenrod;
+	user-select:none;
+	display:flex;
+	flex-direction:column;
+	gap:20px;
+}
+.miniContent3 h3 {
+	font-size:29px;
+/*	filter:drop-shadow(1px 1px 15px #999);*/
+}
+
+.miniContent3 svg {
+	font-size:150px;
+	align-self:center;
+/*	filter:drop-shadow(1px 1px 15px #999);*/
+}
+
 .animCoin {
 	transform:scale(1.5);
 	transition:350ms;
-	user-select:none;
+
+}
+
+
+@media screen and (max-width:768px) {
+	.content3{
+		text-shadow:1px 1px 15px #999;
+	}
 }

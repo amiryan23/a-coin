@@ -1,11 +1,14 @@
 .megaContainer {
 	align-self:center;
 	width:300px;
+	min-height:540px;
 	height:auto;
 /*	border:2px solid orange;*/
 	border-radius:15px;
 /*	filter:drop-shadow(2px 2px 15px #999);*/
-	background-color:rgba(89, 89, 25, 0.5);
+/*	background-color:rgba(89, 89, 25, 0.5);*/
+background: rgb(195,161,34);
+background: linear-gradient(0deg, rgba(195,161,34,1) 0%, rgba(40,37,25,1) 100%);
 	box-shadow:2px 2px 20px rgba(256, 256, 256, 0.4);
 	display:flex;
 	flex-direction:column;
@@ -55,13 +58,25 @@ background: linear-gradient(90deg, rgba(2,0,36,0.5) 0%, rgba(9,9,121,0.5) 12%, r
 	user-select:none;
 }
 
+.fuelEnergy svg {
+	color:yellow;
+	font-size:25px;
+}
+
 .autor {
 	align-self:center;
-	color:#999;
+	color:#111;
 	opacity:0.4;
 	user-select:none;
 	font-family:monospace;
 	font-weight:bold;
 /*	font-size:19px;*/
 
+}
+
+@media screen and (max-width:768px) {
+	.megaContainer{
+		align-self:center;
+	}
+	
 }
