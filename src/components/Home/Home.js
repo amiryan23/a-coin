@@ -6,24 +6,70 @@ import { FaRegClock } from "react-icons/fa6";
 import { BsEmojiSmileUpsideDown } from "react-icons/bs";
 import {useState,useEffect,useRef} from 'react'
 
-const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo})=>{
+const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo,buyEnergy,setBuyEnergy})=>{
 	
 	
-	const [change,setChange] = useState(true)
+	const [change,setChange] = useState("")
 	const [wait,setWait] = useState(true)
 	const [second,setSecond] = useState(15)
 	const intervalRef = useRef(null);
 
+	const timerRef = useRef(null);
+	const timerRef2 = useRef(null);	
+
+	//
 
 	useEffect(()=>{
+		
 		clearInterval(intervalRef.current)
+		clearTimeout(timerRef.current)
+		
 		if(buyTurbo === true){
-		intervalRef.current = setInterval(()=>{setSecond((prevSecond)=>prevSecond - 1)},1000)
-		}
+			intervalRef.current = setInterval(()=>{setSecond((prevSecond)=>prevSecond - 1)},1000)
+	timerRef.current = setTimeout(()=>{
+		setBuyTurbo((prevBuyTurbo)=>false)
+
+		setPoint((prevPoint)=> 1)
+	},15000)
+	}	
+		
 			 return () => {
-      clearInterval(intervalRef.current);
+      clearTimeout(timerRef.current)
+      clearInterval(intervalRef.current)
     };
 	},[buyTurbo])
+
+
+	useEffect(()=>{
+		clearTimeout(timerRef2.current)
+
+		if(buyEnergy === true){
+			timerRef2.current = setTimeout(()=>{
+				setBuyEnergy((prevBuyEnergy)=>false)
+			},5000)
+		}	return ()=>{
+			clearTimeout(timerRef2.current)
+		}
+	},[buyEnergy])
+
+	//
+
+	// useEffect(()=>{
+	// 	clearInterval(intervalRef.current)
+	// 	
+	// 	if(buyTurbo === true){
+	// 	
+	// 	intervalRef.current = setInterval(()=>{setSecond((prevSecond)=>prevSecond - 1)},1000)
+	// 	}
+	// 		 return () => {
+ //      clearInterval(intervalRef.current);
+ //      // clearTimeout(timerRef.current)
+ //    };
+	// },[buyTurbo])
+
+
+
+	//
 
 	useEffect(()=>{
 		if(energy === 0){
@@ -33,23 +79,35 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 	
 	},[energy])
 
+	//
+
 	const CoinChange = useRef()
 	let coinStroage = JSON.parse(localStorage.getItem('coin'))
 
+	//
+
 	useEffect(()=>{
 		setCoin(coinStroage)
+		
 	},[])
+
+	//
+
 
 
 	useEffect(()=>{
 		if(change === true ){
 			CoinChange.current.classList.add(s.animCoin)
 			// setTimeout(()=>{setChange(false)},0)
-			setChange(false)
-			setTimeout(()=>{CoinChange.current.classList.remove(s.animCoin)},50)
+			
+			setTimeout(()=>{
+				CoinChange.current.classList.remove(s.animCoin)
+				setChange((prevChange)=>false)
+			},50)
 		}
 	},[change])
 
+	//
 
 	return (
 		<div className={s.megaContainer}>
@@ -66,7 +124,7 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 				
 				if(energy > 0){
 				setCoin((prevCoin) => prevCoin + point)
-				setChange(true)
+				setChange((prevChange)=>true)
 				setEnergy((prevEnergy) => prevEnergy - 1)
 			}
 				localStorage.setItem('coin',coin)

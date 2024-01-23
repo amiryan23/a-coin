@@ -7,55 +7,81 @@ import { SlEnergy } from "react-icons/sl";
 import {useState,useEffect,useRef} from 'react'
 
 
-const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,buyTurbo,setBuyTurbo}) =>{
+const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,buyTurbo,setBuyTurbo,buyEnergy,setBuyEnergy}) =>{
 	let coinStroage = localStorage.getItem('coin')
-
-	const [turbo,setTurbo] = useState(3)
-	const [boostEnergy,setBoostEnergy] = useState(3)
+	let turboStorage = JSON.parse(localStorage.getItem('turbo'))
+	let energyStorage = JSON.parse(localStorage.getItem('setEnergy'))
 	
-	const [buyEnergy,setBuyEnergy] = useState(false)
+	const [turbo,setTurbo] = useState(turboStorage === null ? 3 : turboStorage )
+	const [boostEnergy,setBoostEnergy] = useState(energyStorage === null ? 3 : energyStorage)
+	
+	
 
 	const btn1 = useRef()
 	const btn2 = useRef()
-		const timerRef = useRef(null);
-  		const timerRef2 = useRef(null);
+		// const timerRef = useRef(null);
+  		// const timerRef2 = useRef(null);
+
+  		const timerRef3 = useRef(null)
+  		const timerRef4 = useRef(null)
+
+  		useEffect(()=>{
+  			localStorage.setItem('turbo',turbo)
+  			localStorage.setItem('setEnergy',turbo)
+  			clearTimeout(timerRef4.current)
+  			clearTimeout(timerRef3.current)
+  			if(turbo < 3){
+  				timerRef3.current = setInterval(()=>{setTurbo((prevTurbo)=>prevTurbo + 1)},600000)
+  				
+  			}
+  			if(boostEnergy < 3){
+  				timerRef4.current = setInterval(()=>{setBoostEnergy((prevBoostEnergy)=>prevBoostEnergy + 1)},600000)
+  				
+  			}
+
+  			return ()=>{
+  				clearTimeout(timerRef3.current)
+  				clearTimeout(timerRef4.current)
+  			}
+  		},[turbo,boostEnergy])
 
 	useEffect(()=>{
 		
   		
-  		clearTimeout(timerRef.current);
-  		clearTimeout(timerRef2.current);
+  		// clearTimeout(timerRef.current);
+  		// clearTimeout(timerRef2.current);
 
 		if(buyTurbo ){
 			btn1.current.disabled = true;
-		timerRef.current = setTimeout(()=>{setBuyTurbo((prevBuyTurbo)=>false)},15000)
+		// timerRef.current = setTimeout(()=>{setBuyTurbo((prevBuyTurbo)=>false)},15000)
 		} else (btn1.current.disabled = false)
 
 		if(buyEnergy ){
 			btn2.current.disabled = true;
-		timerRef2.current = setTimeout(()=>{setBuyEnergy(false)},5000)
+		// timerRef2.current = setTimeout(()=>{setBuyEnergy(false)},5000)
 		} else (btn2.current.disabled = false)
 
 		return () => {
-			clearTimeout(timerRef.current);
-			clearTimeout(timerRef2.current);
+			// clearTimeout(timerRef.current);
+			// clearTimeout(timerRef2.current);
 		}
 	},[buyTurbo,buyEnergy])
 
 
-	useEffect(()=>{
-		
-		if(buyTurbo === true){
-		setTimeout(()=>{
-				setPoint((prevPoint)=> 1)
-				setBuyTurbo(false)
-		},15000)
+// 	useEffect(()=>{
+// 		
+// 		if(buyTurbo === true){
+// 		setTimeout(()=>{
+// 				setPoint((prevPoint)=> 1)
+// 				// setBuyTurbo(false)
+// 		},15000)
+// 
+// 		} 
+// 		
+// 	},[buyTurbo,buyEnergy])
 
-		} 
-		
-	},[buyTurbo,buyEnergy])
-
-	
+	const setTurboBoost = turbo > 0 ? turbo - 1 : turbo
+	const setEnergyBoost = boostEnergy > 0 ? boostEnergy - 1 : boostEnergy
 
 	return (
 		<div className={s.megaContainer}>
@@ -69,7 +95,7 @@ const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,
 			<button ref={btn1} onClick={()=>{
 				
 				if(buyTurbo === false){
-					
+				localStorage.setItem('turbo',setTurboBoost)
 				setPoint((prevPoint)=> 5)
 				if(turbo > 0){
 				setTurbo((prevTurbo)=>prevTurbo - 1)
@@ -86,11 +112,12 @@ const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,
 				
 				if(buyEnergy === false){
 
+					localStorage.setItem('setEnergy',setEnergyBoost)
 					
-					setEnergy((prevEnergy)=>fullEng)
 					if(boostEnergy > 0){
 					setBoostEnergy((prevBoostEnergy)=> prevBoostEnergy - 1)
 					setBuyEnergy((prevBuyEnergy)=> true)
+					setEnergy((prevEnergy)=>fullEng)
 				}
 				}
 			}}>
