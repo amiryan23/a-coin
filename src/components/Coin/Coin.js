@@ -16,6 +16,7 @@ const Coin = ()=>{
 	const [energy,setEnergy] = useState(energyStorage)
 	const [fullEng,setFullEng] = useState(1000)
 	const [point,setPoint] = useState(1)
+	const [buyTurbo,setBuyTurbo] = useState(false)
 	// const [home,setHome] = useState(true)
 	// const [boost,setBoost] = useState(false)
 
@@ -54,7 +55,9 @@ const Coin = ()=>{
 			energy={energy} 
 			setEnergy={setEnergy}
 			point={point}
-			setPoint={setPoint}/>
+			setPoint={setPoint}
+			buyTurbo={buyTurbo}
+			setBuyTurbo={setBuyTurbo}/>
 			<div className={s.content}>
 				<NavLink to="/boost"><button><IoIosRocket /><br />Boost</button></NavLink>
 				<NavLink to="/missions"><button><CgMoreO/><br />Missons</button></NavLink>
@@ -77,7 +80,9 @@ const Coin = ()=>{
 				fullEng={fullEng}
 				setFullEng={setFullEng}
 				point={point}
-				setPoint={setPoint}/>} />
+				setPoint={setPoint}
+				buyTurbo={buyTurbo}
+				setBuyTurbo={setBuyTurbo}/>} />
 		</Routes>
 			<div className={s.autor}>Ⓒ amiryann23</div>
 		</div>
