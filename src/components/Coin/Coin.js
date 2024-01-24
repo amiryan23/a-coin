@@ -11,11 +11,12 @@ import {BrowserRouter, Routes, Route,NavLink} from "react-router-dom"
 const Coin = ()=>{
 	let energyStorage = JSON.parse(localStorage.getItem('energy'))
 	let coinStroage = localStorage.getItem('coin')
+	let pointStorage = JSON.parse(localStorage.getItem('point'))
 
 	const [coin,setCoin] = useState(0)
 	const [energy,setEnergy] = useState(energyStorage)
 	const [fullEng,setFullEng] = useState(1000)
-	const [point,setPoint] = useState(1)
+	const [point,setPoint] = useState(pointStorage ? pointStorage : 1)
 	const [buyTurbo,setBuyTurbo] = useState(false)
 	const [buyEnergy,setBuyEnergy] = useState(false)
 	// const [home,setHome] = useState(true)

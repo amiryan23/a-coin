@@ -1,0 +1,126 @@
+.btn {
+	width:100%;
+	padding:10px;
+	background-color:rgba(0, 0, 0, 0.5);
+	border:none;
+	border-radius:7px;
+	display:flex;
+	flex-direction:row;
+	justify-content:space-between;
+	cursor:pointer;
+	user-select:none;
+}
+
+.btn div {
+	flex:1 0;
+}
+.btn .block1 {
+	align-self:center;
+	opacity:0.5;
+
+}
+
+.multitap1{
+	align-self:center;
+	opacity:1;
+/*	border:1px solid whitesmoke;*/
+/*	transition:200ms;*/
+}
+
+.btn .block11 {
+	align-self:center;
+
+}
+
+.btn .block111 {
+	align-self:center;
+
+}
+
+.btn .block1 svg {
+	font-size:25px;
+	color:whitesmoke;
+	
+}
+
+.btn .multitap1 svg {
+	font-size:25px;
+	color:whitesmoke;
+/*	transition:200ms;*/
+}
+
+.btn .block11 svg {
+	font-size:25px;
+	color:whitesmoke;
+	
+}
+
+.btn .block111 svg {
+	font-size:25px;
+	color:whitesmoke;
+	
+}
+
+.multitap1{
+	opacity:1;
+}
+
+.btn .block2 {
+	display:flex;
+	flex-direction:column;
+	gap:3px;
+	font-family:monospace;
+	font-weight:bold;
+	color:whitesmoke;
+	align-self:center;
+}
+
+.btn .block2 .miniBlock1{
+	color:#999;
+	opacity:0.5;
+
+}
+
+.btn .block2 .multitap2{
+	color:#999;
+	opacity:1;
+
+}
+
+
+.btn .block2 .miniBlock2{
+	display:flex;
+	flex-direction:row;
+	gap:5px;
+	opacity:0.5;
+/*	color:blue;*/
+align-self:center;
+
+}
+
+.btn .block2 .multitap3{
+	display:flex;
+	flex-direction:row;
+	gap:5px;
+	opacity:1;
+/*	color:blue;*/
+align-self:center;
+}
+
+.btn .block2 svg{
+	font-size:15px;
+	color:goldenrod;
+	align-self:center;
+}
+
+
+
+.btn .block3{
+	align-self:center;
+}
+
+.btn .block3 svg {
+	font-size:20px;
+	color:goldenrod;
+
+}

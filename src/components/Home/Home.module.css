@@ -35,6 +35,7 @@ background-image: linear-gradient(to right, red, fuchsia);
 	flex-direction:row;
 	gap:10px;
 	font-weight:bold;
+
 }
 
 .content2 svg {
@@ -48,6 +49,7 @@ background-image: linear-gradient(to right, red, fuchsia);
 	font-size:17px;
 	color:whitesmoke;
 	user-select: none;
+	transition:200ms;
 }
 
 .content3 {
@@ -116,6 +118,7 @@ background-image: linear-gradient(to right, red, fuchsia);
 	height:7px;
 	background-color:#999;
 	border-radius:5px;
+	transition:350ms;
 	
 }
 

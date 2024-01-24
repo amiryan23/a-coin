@@ -126,3 +126,16 @@
 	align-self:center;
 	font-size:25px;
 }
+
+.content5 {
+	font-weight:bold;
+	font-family:monospace;
+	color:whitesmoke;
+	font-size:19px;
+}
+
+.content6{
+	display:flex;
+	flex-direction:column;
+	gap:5px;
+}

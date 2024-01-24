@@ -29,8 +29,8 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 	timerRef.current = setTimeout(()=>{
 		setBuyTurbo((prevBuyTurbo)=>false)
 
-		setPoint((prevPoint)=> 1)
-	},15000)
+		setPoint((prevPoint)=> prevPoint - 5)
+	},16000)
 	}	
 		
 			 return () => {
@@ -109,6 +109,8 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 
 	//
 
+	const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
 	return (
 		<div className={s.megaContainer}>
 			<div className={s.content1}><h3>aCoin</h3></div>
@@ -120,8 +122,9 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 			</div>
 			<div className={s.second}>{second} s.</div>
 			</div>}
-			<div className={s.content3}  ref={CoinChange} >{wait ? <TbCoinFilled onClick={()=>{
-				
+			<div className={s.content3}  ref={CoinChange} >{wait ? <TbCoinFilled onClick={
+				isMobile ? undefined : (e)=>{
+				e.preventDefault()
 				if(energy > 0){
 				setCoin((prevCoin) => prevCoin + point)
 				setChange((prevChange)=>true)
@@ -130,7 +133,19 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 				localStorage.setItem('coin',coin)
 				localStorage.setItem('energy',JSON.stringify(energy))
 
-			}}/> : <div className={s.miniContent3}><h3>Waiting...</h3><BsEmojiSmileUpsideDown /></div> }</div> 
+			}} 
+			onTouchStart={(e)=>{
+				e.preventDefault()
+				if(energy > 0){
+				setCoin((prevCoin) => prevCoin + point)
+				setChange((prevChange)=>true)
+				setEnergy((prevEnergy) => prevEnergy - 1)
+			}
+				localStorage.setItem('coin',coin)
+				localStorage.setItem('energy',JSON.stringify(energy))
+			}}
+		
+			/> : <div className={s.miniContent3}><h3>Waiting...</h3><BsEmojiSmileUpsideDown /></div> }</div> 
 			<div className={s.content4}></div>
 		</div>
 		)

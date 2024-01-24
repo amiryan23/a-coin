@@ -5,6 +5,7 @@ import {NavLink} from 'react-router-dom'
 import { BsRocket } from "react-icons/bs";
 import { SlEnergy } from "react-icons/sl";
 import {useState,useEffect,useRef} from 'react'
+import CoinBoost from './CoinBoost/CoinBoost'
 
 
 const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,buyTurbo,setBuyTurbo,buyEnergy,setBuyEnergy}) =>{
@@ -27,15 +28,15 @@ const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,
 
   		useEffect(()=>{
   			localStorage.setItem('turbo',turbo)
-  			localStorage.setItem('setEnergy',turbo)
+  			localStorage.setItem('setEnergy',boostEnergy)
   			clearTimeout(timerRef4.current)
   			clearTimeout(timerRef3.current)
   			if(turbo < 3){
-  				timerRef3.current = setInterval(()=>{setTurbo((prevTurbo)=>prevTurbo + 1)},600000)
+  				timerRef3.current = setInterval(()=>{setTurbo((prevTurbo)=>prevTurbo + 1)},6000)
   				
   			}
   			if(boostEnergy < 3){
-  				timerRef4.current = setInterval(()=>{setBoostEnergy((prevBoostEnergy)=>prevBoostEnergy + 1)},600000)
+  				timerRef4.current = setInterval(()=>{setBoostEnergy((prevBoostEnergy)=>prevBoostEnergy + 1)},6000)
   				
   			}
 
@@ -88,7 +89,7 @@ const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,
 			<div className={s.content1}><span><NavLink to="/"><GrLinkPrevious/></NavLink></span><span><h3></h3></span><span></span></div>
 			<div className={s.content2}>
 			<span className={s.block1}>Your balance</span>
-			<span className={s.block2}><BsCoin/>{coinStroage}</span>
+			<span className={s.block2}><BsCoin/>{coin}</span>
 			</div>
 			<div className={s.content3}><h2>Free boosters</h2></div>
 			<div className={s.content4}>
@@ -96,8 +97,9 @@ const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,
 				
 				if(buyTurbo === false){
 				localStorage.setItem('turbo',setTurboBoost)
-				setPoint((prevPoint)=> 5)
+				
 				if(turbo > 0){
+				setPoint((prevPoint)=>prevPoint + 5)
 				setTurbo((prevTurbo)=>prevTurbo - 1)
 				setBuyTurbo((prevBuyTurbo)=> true)
 			}
@@ -126,7 +128,14 @@ const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,
 			</button>
 			</div>
 			<div className={s.content5}>Boosters</div>
-			<div className={s.content6}></div>
+			<div className={s.content6}>
+			<CoinBoost 
+			coinStroage={coinStroage}
+			point={point}
+			setPoint={setPoint}
+			coin={coin}
+			setCoin={setCoin}/>
+			</div>
 			<div className={s.content7}></div>
 		</div>
 		)
