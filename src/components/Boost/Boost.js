@@ -134,7 +134,9 @@ const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,
 			point={point}
 			setPoint={setPoint}
 			coin={coin}
-			setCoin={setCoin}/>
+			setCoin={setCoin}
+			fullEng={fullEng}
+			setFullEng={setFullEng}/>
 			</div>
 			<div className={s.content7}></div>
 		</div>

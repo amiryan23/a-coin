@@ -6,12 +6,13 @@ import { SiFastapi } from "react-icons/si";
 import { BsSpeedometer2 } from "react-icons/bs";
 import {useState,useEffect,useRef} from "react"
 
-const CoinBoost = ({coin,setCoin,point,setPoint}) => {
+const CoinBoost = ({coin,setCoin,point,setPoint,fullEng,setFullEng}) => {
 let coinStroage = localStorage.getItem('coin')
 	const multitapCoinStorage = JSON.parse(localStorage.getItem('multitapCoin'))
+	const energyCoinStorage = JSON.parse(localStorage.getItem('energyCoin'))
 
 	const [multitapCoin,setMultitapCoin] = useState(multitapCoinStorage ? multitapCoinStorage : 1000)
-	const [energyCoin,setEnergyCoin] = useState(1000)
+	const [energyCoin,setEnergyCoin] = useState(energyCoinStorage ? energyCoinStorage : 1000)
 	const [recharghingCoin,setRecharchingCoin] = useState(1000)
 
 	useEffect(()=>{
@@ -54,6 +55,28 @@ let coinStroage = localStorage.getItem('coin')
 
 	//
 
+	const energy1 = useRef(null)
+	const energy2 = useRef(null)
+	const energy3 = useRef(null)
+
+	useEffect(()=>{
+		if(coin > energyCoin){
+			energy1.current.classList.remove(s.block11)
+			energy1.current.classList.add(s.energy1)
+			energy2.current.classList.remove(s.miniBlock1)
+			energy2.current.classList.add(s.energy2)
+			energy3.current.classList.remove(s.miniBlock2)
+			energy3.current.classList.add(s.energy3)
+		} else {
+			energy1.current.classList.add(s.block11)
+			energy1.current.classList.remove(s.energy1)
+			energy2.current.classList.add(s.miniBlock1)
+			energy2.current.classList.remove(s.energy2)
+			energy3.current.classList.add(s.miniBlock2)
+			energy3.current.classList.remove(s.energy3)
+		}
+	},[])
+
 	return (
 		<>
 		<button className={s.btn} onClick={()=>{
@@ -80,14 +103,23 @@ let coinStroage = localStorage.getItem('coin')
 				{coinStroage > multitapCoin ? "" : <TbLock />}
 			</div>
 		</button>
-		<button className={s.btn}>
-			<div className={s.block11}><SiFastapi /></div>
+		<button className={s.btn} onClick={()=>{
+			if(coin > energyCoin ){
+				setEnergyCoin((prevEnergyCoin)=>prevEnergyCoin * 2)
+				setFullEng((prevFullEng)=>prevFullEng + 200)
+				setCoin((prevCoin)=>prevCoin - energyCoin)
+				localStorage.setItem('coin',coin - energyCoin)
+				localStorage.setItem('fullEng',fullEng + 200)
+				localStorage.setItem('energyCoin',energyCoin * 2)
+			}
+		}}>
+			<div className={s.block11} ref={energy1}><SiFastapi /></div>
 			<div className={s.block2}>
-				<span className={s.miniBlock1}>Energy</span>
-				<span className={s.miniBlock2}><RiCoinsFill/> {energyCoin}</span>
+				<span className={s.miniBlock1} ref={energy2}>Energy</span>
+				<span className={s.miniBlock2} ref={energy3}><RiCoinsFill/> {energyCoin}</span>
 			</div>
 			<div className={s.block3}>
-				{coinStroage > energyCoin ? "" :<TbLock />}
+				{coin > energyCoin ? "" :<TbLock />}
 			</div>
 		</button>		
 		<button className={s.btn}>
@@ -97,7 +129,7 @@ let coinStroage = localStorage.getItem('coin')
 				<span className={s.miniBlock2}><RiCoinsFill/> {recharghingCoin}</span>
 			</div>
 			<div className={s.block3}>
-				{coinStroage > recharghingCoin ? "" :<TbLock />}
+				{coin > recharghingCoin ? "" :<TbLock />}
 			</div>
 		</button>	
 		</>

@@ -12,10 +12,10 @@ const Coin = ()=>{
 	let energyStorage = JSON.parse(localStorage.getItem('energy'))
 	let coinStroage = localStorage.getItem('coin')
 	let pointStorage = JSON.parse(localStorage.getItem('point'))
-
+	let fullEngStorage = JSON.parse(localStorage.getItem('fullEng'))
 	const [coin,setCoin] = useState(0)
-	const [energy,setEnergy] = useState(energyStorage)
-	const [fullEng,setFullEng] = useState(1000)
+	const [energy,setEnergy] = useState(energyStorage ? energyStorage : 1000 )
+	const [fullEng,setFullEng] = useState(fullEngStorage ? fullEngStorage : 1000)
 	const [point,setPoint] = useState(pointStorage ? pointStorage : 1)
 	const [buyTurbo,setBuyTurbo] = useState(false)
 	const [buyEnergy,setBuyEnergy] = useState(false)
@@ -35,6 +35,7 @@ const Coin = ()=>{
 		if(energy < fullEng){
 			timer =	setInterval(()=>{setEnergy((prevEnergy) => {
         if (prevEnergy < fullEng) {
+        	localStorage.setItem('energy',prevEnergy)
           return prevEnergy + 1;
         } else {
           clearInterval(timer);
@@ -72,7 +73,8 @@ const Coin = ()=>{
 			</div>
 			<div className={s.energy}>
 				
-				<div className={s.miniEnergy} style={{width:`${100 / 10 * energy / 100}%`}} ></div>
+				<div className={s.miniEnergy} style={{width:`${(energy/fullEng) 
+				* 100}%`}} ></div>
 				
 			</div> </> }/>
 			<Route path="/boost" element={

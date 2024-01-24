@@ -54,6 +54,8 @@ background-image: linear-gradient(to right, red, fuchsia);
 
 .content3 {
 	align-self:center;
+	user-select:none;
+	touch-action: manipulation;
 }
 
 .content3 svg {
@@ -65,6 +67,8 @@ background-image: linear-gradient(to right, red, fuchsia);
   -ms-filter:  drop-shadow(1px 1px 15px #999);
   -o-filter: drop-shadow(1px 1px 15px #999);
 	cursor:pointer;
+	user-select:none;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .miniContent3 {
