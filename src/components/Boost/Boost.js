@@ -8,7 +8,7 @@ import {useState,useEffect,useRef} from 'react'
 import CoinBoost from './CoinBoost/CoinBoost'
 
 
-const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,buyTurbo,setBuyTurbo,buyEnergy,setBuyEnergy}) =>{
+const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,buyTurbo,setBuyTurbo,buyEnergy,setBuyEnergy,energyPoint,setEnergyPoint,recharghPoint,setRecharghPoint}) =>{
 	let coinStroage = localStorage.getItem('coin')
 	let turboStorage = JSON.parse(localStorage.getItem('turbo'))
 	let energyStorage = JSON.parse(localStorage.getItem('setEnergy'))
@@ -136,7 +136,11 @@ const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,
 			coin={coin}
 			setCoin={setCoin}
 			fullEng={fullEng}
-			setFullEng={setFullEng}/>
+			setFullEng={setFullEng}
+			energyPoint={energyPoint}
+			setEnergyPoint={setEnergyPoint}
+			recharghPoint={recharghPoint}
+			setRecharghPoint={setRecharghPoint}/>
 			</div>
 			<div className={s.content7}></div>
 		</div>

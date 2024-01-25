@@ -6,7 +6,7 @@ import { FaRegClock } from "react-icons/fa6";
 import { BsEmojiSmileUpsideDown } from "react-icons/bs";
 import {useState,useEffect,useRef} from 'react'
 
-const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo,buyEnergy,setBuyEnergy})=>{
+const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo,buyEnergy,setBuyEnergy,energyPoint,setEnergyPoint})=>{
 	
 	
 	const [change,setChange] = useState("")
@@ -83,11 +83,14 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 
 	const CoinChange = useRef()
 	let coinStroage = JSON.parse(localStorage.getItem('coin'))
+	// let energyPointStorage = JSON.parse(localStorage.getItem('energyPoint'))
+	
 
 	//
 
 	useEffect(()=>{
 		setCoin(coinStroage)
+		// setEnergyPoint(energyPointStorage)
 		
 	},[])
 
@@ -128,7 +131,9 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 				if(energy > 0){
 				setCoin((prevCoin) => prevCoin + point)
 				setChange((prevChange)=>true)
-				setEnergy((prevEnergy) => prevEnergy - 1)
+				if(energy >= energyPoint){
+				setEnergy((prevEnergy) => prevEnergy - energyPoint)
+				}
 			}
 				localStorage.setItem('coin',coin)
 				localStorage.setItem('energy',JSON.stringify(energy))
@@ -139,7 +144,9 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 				if(energy > 0){
 				setCoin((prevCoin) => prevCoin + point)
 				setChange((prevChange)=>true)
-				setEnergy((prevEnergy) => prevEnergy - 1)
+				if(energy >= energyPoint){
+				setEnergy((prevEnergy) => prevEnergy - energyPoint)
+				}
 			}
 				localStorage.setItem('coin',coin)
 				localStorage.setItem('energy',JSON.stringify(energy))

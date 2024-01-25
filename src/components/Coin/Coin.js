@@ -13,10 +13,14 @@ const Coin = ()=>{
 	let coinStroage = localStorage.getItem('coin')
 	let pointStorage = JSON.parse(localStorage.getItem('point'))
 	let fullEngStorage = JSON.parse(localStorage.getItem('fullEng'))
+	let energyPointStorage = JSON.parse(localStorage.getItem('energyPoint'))
+	let recharghPointStorage = JSON.parse(localStorage.getItem('recharghPoint')) 
 	const [coin,setCoin] = useState(0)
 	const [energy,setEnergy] = useState(energyStorage ? energyStorage : 1000 )
 	const [fullEng,setFullEng] = useState(fullEngStorage ? fullEngStorage : 1000)
 	const [point,setPoint] = useState(pointStorage ? pointStorage : 1)
+	const [energyPoint,setEnergyPoint] = useState(energyPointStorage ? energyPointStorage : 1)
+	const [recharghPoint,setRecharghPoint] = useState(recharghPointStorage ? recharghPointStorage : 1)
 	const [buyTurbo,setBuyTurbo] = useState(false)
 	const [buyEnergy,setBuyEnergy] = useState(false)
 	// const [home,setHome] = useState(true)
@@ -36,7 +40,7 @@ const Coin = ()=>{
 			timer =	setInterval(()=>{setEnergy((prevEnergy) => {
         if (prevEnergy < fullEng) {
         	localStorage.setItem('energy',prevEnergy)
-          return prevEnergy + 1;
+          return prevEnergy + recharghPoint;
         } else {
           clearInterval(timer);
           return prevEnergy;
@@ -52,7 +56,8 @@ const Coin = ()=>{
 	return (
 		<div className={s.megaContainer}>
 		<Routes>
-			<Route path="/" element={<><Home  
+			<Route path="/" element={<>
+			<Home  
 			coin={coin} 
 			setCoin={setCoin} 
 			energy={energy} 
@@ -62,7 +67,10 @@ const Coin = ()=>{
 			buyTurbo={buyTurbo}
 			setBuyTurbo={setBuyTurbo}
 			buyEnergy={buyEnergy}
-			setBuyEnergy={setBuyEnergy}/>
+			setBuyEnergy={setBuyEnergy}
+			energyPoint={energyPoint}
+			setEnergyPoint={setEnergyPoint}
+			/>
 			<div className={s.content}>
 				<NavLink to="/boost"><button><IoIosRocket /><br />Boost</button></NavLink>
 				<NavLink to="/missions"><button><CgMoreO/><br />Missons</button></NavLink>
@@ -90,7 +98,11 @@ const Coin = ()=>{
 				buyTurbo={buyTurbo}
 				setBuyTurbo={setBuyTurbo}
 				buyEnergy={buyEnergy}
-				setBuyEnergy={setBuyEnergy}/>} />
+				setBuyEnergy={setBuyEnergy}
+				energyPoint={energyPoint}
+				setEnergyPoint={setEnergyPoint}
+				recharghPoint={recharghPoint}
+				setRecharghPoint={setRecharghPoint}/>} />
 		</Routes>
 			<div className={s.autor}>Ⓒ amiryann23</div>
 		</div>

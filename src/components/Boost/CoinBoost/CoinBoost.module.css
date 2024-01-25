@@ -41,7 +41,13 @@
 
 .btn .block111 {
 	align-self:center;
+	opacity:0.5;
 
+}
+
+.recharch1 {
+	align-self:center;
+	opacity:1;
 }
 
 .btn .block1 svg {
@@ -69,6 +75,12 @@
 }
 
 .btn .block111 svg {
+	font-size:25px;
+	color:whitesmoke;
+	
+}
+
+.btn .recharch1 svg {
 	font-size:25px;
 	color:whitesmoke;
 	
@@ -106,6 +118,12 @@
 
 }
 
+.btn .block2 .recharch1{
+	color:#999;
+	opacity:1;
+
+}
+
 
 .btn .block2 .miniBlock2{
 	display:flex;
@@ -127,6 +145,15 @@ align-self:center;
 }
 
 .btn .block2 .energy3{
+	display:flex;
+	flex-direction:row;
+	gap:5px;
+	opacity:1;
+/*	color:blue;*/
+align-self:center;
+}
+
+.btn .block2 .recharch1{
 	display:flex;
 	flex-direction:row;
 	gap:5px;
