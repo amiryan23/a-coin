@@ -56,6 +56,9 @@ background-image: linear-gradient(to right, red, fuchsia);
 	align-self:center;
 	user-select:none;
 	touch-action: manipulation;
+	display:flex;
+	flex-direction:column;
+	gap:0;
 }
 
 .content3 svg {
@@ -70,6 +73,68 @@ background-image: linear-gradient(to right, red, fuchsia);
 	user-select:none;
 	-webkit-tap-highlight-color: transparent;
 }
+
+.contentAnim{
+	display:flex;
+	flex-direction:row;
+	padding:0;
+	gap:0;
+	justify-content:center;
+}
+
+.content3 .miniPoint {
+	align-self:center;
+	opacity:0;
+	color:whitesmoke;
+/*	animation:none;*/
+font-size:19px;
+font-weight:bold;
+/*transform:translateY(-150px)translateX(30px);*/
+/*visibility:hidden;*/
+
+}
+
+.pointAnim1{
+	animation:pointAnim1 500ms linear;
+	
+}
+
+.pointAnim2{
+	animation:pointAnim2 500ms linear;
+	
+}
+
+.pointAnim3{
+	animation:pointAnim3 500ms linear;
+	
+}
+
+.pointAnim4{
+	animation:pointAnim4 500ms linear;
+}
+
+
+
+@keyframes pointAnim1 {
+	50%{transform:translateY(-200px)translateX(70px);opacity:1;}
+	100%{transform:translateY(-150px)translateX(90px);opacity:0;}
+}	
+
+@keyframes pointAnim2 {
+	50%{transform:translateY(-230px)translateX(-90px);opacity:1;}
+	100%{transform:translateY(-180px)translateX(-110px);opacity:0;}
+}	
+
+@keyframes pointAnim3 {
+	50%{transform:translateY(-230px)translateX(-90px);opacity:1;}
+	100%{transform:translateY(-180px)translateX(-110px);opacity:0;}
+}	
+
+@keyframes pointAnim4 {
+	50%{transform:translateY(-230px)translateX(60px);opacity:1;}
+	100%{transform:translateY(-180px)translateX(90px);opacity:0;}
+}	
+
 
 .miniContent3 {
 /*	font-size:39px;*/

@@ -96,8 +96,9 @@
 .content4 button:disabled {
 	background: rgb(34,135,195);
 background: linear-gradient(0deg, rgba(34,135,195,1) 0%, rgba(46,130,68,1) 100%);
-/*	filter:blur(1px);*/
+	filter:blur(1px);
 	cursor:not-allowed;
+	transition:350ms;
 
 	
 }
