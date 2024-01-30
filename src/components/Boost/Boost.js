@@ -26,6 +26,23 @@ const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,
   		const timerRef3 = useRef(null)
   		const timerRef4 = useRef(null)
 
+
+  		const boostAnim = useRef(null)
+
+  		useEffect(()=>{
+  			let bAnim = true
+  			setTimeout(()=>{boostAnim.current.classList.add(s.boostAnim)},0)
+
+  			return ()=>{
+  				if(!bAnim){
+  				boostAnim.current.classList.remove(s.boostAnim)
+  			}
+  			}
+  		},[])
+
+
+
+
   		useEffect(()=>{
   			localStorage.setItem('turbo',turbo)
   			localStorage.setItem('setEnergy',boostEnergy)
@@ -85,7 +102,7 @@ const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,
 	const setEnergyBoost = boostEnergy > 0 ? boostEnergy - 1 : boostEnergy
 
 	return (
-		<div className={s.megaContainer}>
+		<div className={s.megaContainer} ref={boostAnim}>
 			<div className={s.content1}><span><NavLink to="/"><GrLinkPrevious/></NavLink></span><span><h3></h3></span><span></span></div>
 			<div className={s.content2}>
 			<span className={s.block1}>Your balance</span>

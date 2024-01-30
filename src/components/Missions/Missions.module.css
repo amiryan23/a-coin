@@ -1,0 +1,49 @@
+.megaContainer {
+	display:flex;
+	flex-direction:column;
+	justify-content:space-between;
+	gap:25px;
+	padding:5px;
+	user-select:none;
+	opacity:0;
+	transform:translateY(-200px);
+}
+
+.boostAnim {
+	opacity:1;
+	transition:800ms;
+	transform:translateY(0px);
+}
+
+
+
+.content1{
+	display:flex;
+	flex-direction:row;
+	justify-content:space-between;
+}
+.content1 span a {
+	color:whitesmoke;
+	font-size:29px;
+
+}
+
+.miniBlock3 {
+	display:flex;
+	flex-direction:row;
+	gap:5px;
+	justify-content:center;
+}
+
+.miniBlock3 svg {
+	color:goldenrod;
+	align-self:center;
+}
+
+.miniBlock3 h3 {
+	font-size:15px;
+	align-self:center;
+	color:whitesmoke;
+	font-weight:bold;
+	font-family:monospace;
+}

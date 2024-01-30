@@ -5,8 +5,17 @@
 	flex-direction:column;
 	gap:20px;
 	padding:10px;
+	opacity:0;
+	transform:translateY(150px);
 
 }
+
+.boostAnim {
+	opacity:1;
+	transition:800ms;
+	transform:translateY(0px);
+}
+
 
 .content1{
 	align-self:center;

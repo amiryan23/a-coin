@@ -15,7 +15,17 @@ background: linear-gradient(0deg, rgba(195,161,34,1) 0%, rgba(40,37,25,1) 100%);
 	justify-content:space-between;
 	gap:5px;
 	padding:10px 10px 0px 10px;
+	overflow:hidden;
+	opacity:0;
+	transform:translateY(-100px);
 }
+
+.boostAnim {
+	opacity:1;
+	transition:800ms;
+	transform:translateY(0px);
+}
+
 
 .content {
 	align-self:flex-end;

@@ -1,11 +1,12 @@
 import s from './Coin.module.css'
 import Home from './../Home/Home'
-import {useState,useEffect} from 'react'
+import {useState,useEffect,useRef} from 'react'
 import { IoIosRocket } from "react-icons/io";
 import { CgMoreO } from "react-icons/cg";
 import { FaKey } from "react-icons/fa6";
 import { SlEnergy } from "react-icons/sl";
 import Boost from './../Boost/Boost'
+import Missions from './../Missions/Missions'
 import {BrowserRouter, Routes, Route,NavLink} from "react-router-dom"
 
 const Coin = ()=>{
@@ -23,16 +24,20 @@ const Coin = ()=>{
 	const [recharghPoint,setRecharghPoint] = useState(recharghPointStorage ? recharghPointStorage : 1)
 	const [buyTurbo,setBuyTurbo] = useState(false)
 	const [buyEnergy,setBuyEnergy] = useState(false)
-	// const [home,setHome] = useState(true)
-	// const [boost,setBoost] = useState(false)
 
-// 
-// 	useEffect(()=>{
-// 		let coinStroage = localStorage.getItem('coin')
-// 		let energyStorage = localStorage.getItem('energy')
-// 
-// 		setEnergy(energyStorage)
-// 	},[])
+const boostAnim = useRef(null)
+
+  		useEffect(()=>{
+  			let bAnim = true
+  			setTimeout(()=>{boostAnim.current.classList.add(s.boostAnim)},0)
+
+  			return ()=>{
+  				if(!bAnim){
+  				boostAnim.current.classList.remove(s.boostAnim)
+  			}
+  			}
+  		},[])
+
 
 	useEffect(()=>{
 		let timer;
@@ -53,8 +58,10 @@ const Coin = ()=>{
     clearInterval(timer);
   };
 	},[energy,fullEng])
+
+
 	return (
-		<div className={s.megaContainer}>
+		<div className={s.megaContainer} ref={boostAnim}>
 		<Routes>
 			<Route path="/" element={<>
 			<Home  
@@ -103,6 +110,11 @@ const Coin = ()=>{
 				setEnergyPoint={setEnergyPoint}
 				recharghPoint={recharghPoint}
 				setRecharghPoint={setRecharghPoint}/>} />
+				<Route path="/missions" element={
+					<Missions
+					coin={coin} 
+					setCoin={setCoin}
+					 />} />
 		</Routes>
 			<div className={s.autor}>Ⓒ amiryann23</div>
 		</div>

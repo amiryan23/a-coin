@@ -19,6 +19,23 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 	const intervalRef = useRef(null);
 
 
+	//
+
+	const boostAnim = useRef(null)
+
+  		useEffect(()=>{
+  			let bAnim = true
+  			setTimeout(()=>{boostAnim.current.classList.add(s.boostAnim)},0)
+
+  			return ()=>{
+  				if(!bAnim){
+  				boostAnim.current.classList.remove(s.boostAnim)
+  			}
+  			}
+  		},[])
+
+  	//
+
 	const timerRef = useRef(null);
 	const timerRef2 = useRef(null);	
 
@@ -208,7 +225,7 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 
 
 	return (
-		<div className={s.megaContainer}>
+		<div className={s.megaContainer} ref={boostAnim}>
 			<div className={s.content1}><h3>aCoin</h3></div>
 			<div className={s.content2}><BsCoin /><h2>{coin}</h2></div>
 			{buyTurbo === true &&	<div className={s.miniContent}> 
