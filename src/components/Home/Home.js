@@ -5,8 +5,10 @@ import { FaStopwatch } from "react-icons/fa6";
 import { FaRegClock } from "react-icons/fa6";
 import { BsEmojiSmileUpsideDown } from "react-icons/bs";
 import {useState,useEffect,useRef} from 'react'
+import { FaTelegramPlane } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 
-const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo,buyEnergy,setBuyEnergy,energyPoint,setEnergyPoint})=>{
+const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo,buyEnergy,setBuyEnergy,energyPoint,setEnergyPoint,visitTele,setVisitTele,visitGitHub,setVisitGitHub})=>{
 	
 	
 	const [change,setChange] = useState("")
@@ -21,15 +23,15 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 
 	//
 
-	const boostAnim = useRef(null)
+	const boostAnim2 = useRef(null)
 
   		useEffect(()=>{
   			let bAnim = true
-  			setTimeout(()=>{boostAnim.current.classList.add(s.boostAnim)},0)
+  			setTimeout(()=>{boostAnim2.current.classList.add(s.boostAnim)},0)
 
   			return ()=>{
   				if(!bAnim){
-  				boostAnim.current.classList.remove(s.boostAnim)
+  				boostAnim2.current.classList.remove(s.boostAnim)
   			}
   			}
   		},[])
@@ -225,8 +227,21 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 
 
 	return (
-		<div className={s.megaContainer} ref={boostAnim}>
-			<div className={s.content1}><h3>aCoin</h3></div>
+		<div className={s.megaContainer} ref={boostAnim2}>
+			<div className={s.content1}>
+			<span className={s.miniBlock1}></span>
+			<span className={s.miniBlock2}><h3>aCoin</h3></span>
+			<span className={s.miniBlock3}>
+				<a href="https://t.me/+N2dV3jcwX5llOTUy" target="_blank" title="Telegram" onClick={()=>{
+					setVisitTele((prevVisitTele)=>true)
+					localStorage.setItem('visitTele',true)
+				}}><FaTelegramPlane /></a>
+				<a href="https://github.com/amiryan23" target="_blank" title="Github" onClick={()=>{
+					setVisitGitHub((prevVisitGithub)=>true)
+					localStorage.setItem('visitGitHub',true)
+				}}><FaGithub /></a>
+			</span>
+			</div>
 			<div className={s.content2}><BsCoin /><h2>{coin}</h2></div>
 			{buyTurbo === true &&	<div className={s.miniContent}> 
 			<div className={s.turboMode}>Turbo Mode</div>

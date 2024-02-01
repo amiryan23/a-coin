@@ -16,6 +16,8 @@ const Coin = ()=>{
 	let fullEngStorage = JSON.parse(localStorage.getItem('fullEng'))
 	let energyPointStorage = JSON.parse(localStorage.getItem('energyPoint'))
 	let recharghPointStorage = JSON.parse(localStorage.getItem('recharghPoint')) 
+	let visitTeleStorage = JSON.parse(localStorage.getItem('visitTele'))
+	let visitGitHubStorage = JSON.parse(localStorage.getItem('visitGitHub'))
 	const [coin,setCoin] = useState(0)
 	const [energy,setEnergy] = useState(energyStorage ? energyStorage : 1000 )
 	const [fullEng,setFullEng] = useState(fullEngStorage ? fullEngStorage : 1000)
@@ -24,16 +26,18 @@ const Coin = ()=>{
 	const [recharghPoint,setRecharghPoint] = useState(recharghPointStorage ? recharghPointStorage : 1)
 	const [buyTurbo,setBuyTurbo] = useState(false)
 	const [buyEnergy,setBuyEnergy] = useState(false)
+	const [visitTele,setVisitTele] = useState(visitTeleStorage ? visitTeleStorage : false)
+	const [visitGitHub,setVisitGitHub] = useState(visitGitHubStorage ? visitGitHubStorage : false)
 
-const boostAnim = useRef(null)
+const boostAnim1 = useRef(null)
 
   		useEffect(()=>{
   			let bAnim = true
-  			setTimeout(()=>{boostAnim.current.classList.add(s.boostAnim)},0)
+  			setTimeout(()=>{boostAnim1.current.classList.add(s.boostAnim)},0)
 
   			return ()=>{
   				if(!bAnim){
-  				boostAnim.current.classList.remove(s.boostAnim)
+  				boostAnim1.current.classList.remove(s.boostAnim)
   			}
   			}
   		},[])
@@ -61,7 +65,7 @@ const boostAnim = useRef(null)
 
 
 	return (
-		<div className={s.megaContainer} ref={boostAnim}>
+		<div className={s.megaContainer} ref={boostAnim1}>
 		<Routes>
 			<Route path="/" element={<>
 			<Home  
@@ -77,6 +81,10 @@ const boostAnim = useRef(null)
 			setBuyEnergy={setBuyEnergy}
 			energyPoint={energyPoint}
 			setEnergyPoint={setEnergyPoint}
+			visitTele={visitTele}
+			setVisitTele={setVisitTele}
+			visitGitHub={visitGitHub}
+			setVisitGitHub={setVisitGitHub}
 			/>
 			<div className={s.content}>
 				<NavLink to="/boost"><button><IoIosRocket /><br />Boost</button></NavLink>
@@ -114,6 +122,10 @@ const boostAnim = useRef(null)
 					<Missions
 					coin={coin} 
 					setCoin={setCoin}
+					visitTele={visitTele}
+					setVisitTele={setVisitTele}
+					visitGitHub={visitGitHub}
+					setVisitGitHub={setVisitGitHub}
 					 />} />
 		</Routes>
 			<div className={s.autor}>Ⓒ amiryann23</div>

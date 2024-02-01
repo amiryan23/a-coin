@@ -18,26 +18,59 @@
 
 
 .content1{
+	width:100%;
 	align-self:center;
 /*	color:darkorange;*/
-	color:lightgoldenrodyellow;
+	
 
 	user-select: none;
-	font-family:monospace;
-	font-size:25px;
-/*	letter-spacing:2px;*/
-	/*color: transparent; 
-	background-clip: text;
-background-image: linear-gradient(to right, red, fuchsia);
-*/
+	
+	display:flex;
+	flex-direction:row;
+	justify-content:space-between;
+	
+
 }
 
-/*.content1 h3{
-	color: transparent; 
-	background-clip: text;
-background-image: linear-gradient(to right, red, fuchsia);
+
+
+.content1 .miniBlock2{
+	font-family:monospace;
+	font-size:23px;
+	color:lightgoldenrodyellow;
+	align-self:center;
+	display:flex;
+	justify-content:center;
+
 }
-*/
+
+
+.content1 .miniBlock3 {
+	align-self:flex-end;
+	display:flex;
+	flex-direction:row;
+	gap:2px;
+	justify-content:flex-end;
+}
+
+.content1 span {
+	flex:1;
+}
+
+.content1 .miniBlock3 a {
+	padding:4px;
+/*	background-color:rgba(0, 0, 0, 0.25);*/
+background: rgb(249,228,34);
+background: linear-gradient(0deg, rgba(249,228,34,0.2) 0%, rgba(3,2,1,0.2) 78%);
+	border-radius:5px;
+
+}
+
+.content1 .miniBlock3 a  svg {
+/*	color:rgba(256, 256, 256, 0.9);*/
+    color:lightgoldenrodyellow;
+	font-size:14px;
+}
 .content2 {
 	align-self:center;
 	display:flex;
@@ -81,6 +114,7 @@ background-image: linear-gradient(to right, red, fuchsia);
 	cursor:pointer;
 	user-select:none;
 	-webkit-tap-highlight-color: transparent;
+
 }
 
 .contentAnim{
@@ -89,6 +123,7 @@ background-image: linear-gradient(to right, red, fuchsia);
 	padding:0;
 	gap:0;
 	justify-content:center;
+
 }
 
 .content3 .miniPoint {
@@ -169,8 +204,8 @@ font-weight:bold;
 }
 
 .animCoin {
-	transform:scale(1.5);
-	transition:350ms;
+	transform:scale(1.09);
+	transition:50ms;
 
 }
 

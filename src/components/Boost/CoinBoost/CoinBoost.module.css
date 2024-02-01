@@ -103,24 +103,28 @@
 .btn .block2 .miniBlock1{
 	color:#999;
 	opacity:0.5;
+	transition:350ms;
 
 }
 
 .btn .block2 .multitap2{
 	color:#999;
 	opacity:1;
+	transition:350ms;
 
 }
 
 .btn .block2 .energy2{
 	color:#999;
 	opacity:1;
+	transition:350ms;
 
 }
 
 .btn .block2 .recharch1{
 	color:#999;
 	opacity:1;
+	transition:350ms;
 
 }
 
@@ -132,6 +136,7 @@
 	opacity:0.5;
 /*	color:blue;*/
 align-self:center;
+transition:350ms;
 
 }
 
@@ -142,6 +147,7 @@ align-self:center;
 	opacity:1;
 /*	color:blue;*/
 align-self:center;
+transition:350ms;
 }
 
 .btn .block2 .energy3{
@@ -151,6 +157,7 @@ align-self:center;
 	opacity:1;
 /*	color:blue;*/
 align-self:center;
+transition:350ms;
 }
 
 .btn .block2 .recharch1{
@@ -160,6 +167,7 @@ align-self:center;
 	opacity:1;
 /*	color:blue;*/
 align-self:center;
+transition:350ms;
 }
 
 .btn .block2 svg{
