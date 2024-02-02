@@ -4,7 +4,7 @@ import { RiCoinsFill } from "react-icons/ri"
 import { GrFormClose } from "react-icons/gr";
 import { AiOutlineCheck } from "react-icons/ai";
 import {useState,useEffect,useRef} from 'react'
-import { PiTelegramLogo } from "react-icons/pi";
+import { LuGithub } from "react-icons/lu";
 
 const Mission4 = ({visitTele,setVisitTele,coin,setCoin})=>{
 	
@@ -70,7 +70,7 @@ setTimeout(()=>{
 				}
 
 			}}>
-			<span className={s.miniContent1}><PiTelegramLogo /></span>
+			<span className={s.miniContent1}><LuGithub /></span>
 			{!git
 			? <span className={s.miniContent2}>
 				<span className={s.miniBlock1}>Visit GitHub account</span>

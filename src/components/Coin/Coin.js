@@ -18,7 +18,7 @@ const Coin = ()=>{
 	let recharghPointStorage = JSON.parse(localStorage.getItem('recharghPoint')) 
 	let visitTeleStorage = JSON.parse(localStorage.getItem('visitTele'))
 	let visitGitHubStorage = JSON.parse(localStorage.getItem('visitGitHub'))
-	const [coin,setCoin] = useState(0)
+	const [coin,setCoin] = useState(coinStroage ? coinStroage : 0)
 	const [energy,setEnergy] = useState(energyStorage ? energyStorage : 1000 )
 	const [fullEng,setFullEng] = useState(fullEngStorage ? fullEngStorage : 1000)
 	const [point,setPoint] = useState(pointStorage ? pointStorage : 1)
@@ -56,6 +56,8 @@ const boostAnim1 = useRef(null)
         }
       });
     }, 1000);
+  } else if(energy > fullEng){
+  	setEnergy(fullEng)
   }
 
 	return () => {

@@ -133,23 +133,27 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 	const timer1 = useRef(null)
 	const timer2 = useRef(null)
 
+	 const timerRef3 = useRef(null);
+
 
 	useEffect(()=>{
 
 		
 
 		if(change && CoinChange.current){
+			clearTimeout(timerRef3.current);
+			setTimeout(()=>{
 			CoinChange.current.classList.add(s.animCoin)
 			// setTimeout(()=>{setChange(false)},0)
 			setChange((prevChange)=>false)
-			setTimeout(()=>{
+			timerRef3.current = setTimeout(()=>{
 				CoinChange.current.classList.remove(s.animCoin)
 				// setAnimation((prevAnimation)=>true)
 				console.log(animation,animation2,animation3)
-			},40)
-		}
+			},50) },0)
+		} 
 		if(change === true && CoinChange.current){
-			
+			clearTimeout(timerRef3.current);
 			// setTimeout(()=>{setChange(false)},0)
 			if(animation && energy > energyPoint){
 			pointAnim1.current.classList.add(s.pointAnim1)
@@ -283,6 +287,7 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 
 			} 
 			onTouchStart={(e)=>{
+				e.stopPropagation();
 				e.preventDefault()
 				if(energy > 0){
 				setCoin((prevCoin) => prevCoin + point)
@@ -309,8 +314,12 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 				
 				setAnimation((prevAnimation3)=>true)
 				}
+
+      			
+      				// navigator?.vibrate?.(100)
+   						 
 			}}
-		
+	
 			/> <div className={s.contentAnim}>
 			<span className={s.miniPoint} ref={pointAnim1}>+{point}</span>
 			<span className={s.miniPoint} ref={pointAnim2}>+{point}</span>

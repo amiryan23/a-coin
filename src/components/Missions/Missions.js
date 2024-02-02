@@ -10,6 +10,7 @@ import Mission1 from './Mission1/Mission1'
 import Mission2 from './Mission2/Mission2'
 import Mission3 from './Mission3/Mission3'
 import MIssion4 from './Mission4/Mission4'
+import Mission5 from './Mission5/Mission5'
 
 const Missions = ({coin,setCoin,visitTele,setVisitTele,visitGitHub,setVisitGitHub})=>{
 
@@ -74,11 +75,10 @@ const Missions = ({coin,setCoin,visitTele,setVisitTele,visitGitHub,setVisitGitHu
 			setCoin={setCoin} 
 			visitGitHub={visitGitHub}
 			setVisitGitHub={setVisitGitHub} />
-
-			<div className={s.content3}></div>
-			<div className={s.content4}></div>
-			<div className={s.content5}></div>
-			<div className={s.content6}></div>
+			<Mission5
+			coin={coin} 
+			setCoin={setCoin}  />
+			
 		</div>
 		)
 }
