@@ -5,6 +5,7 @@ import { GrFormClose } from "react-icons/gr";
 import { AiOutlineCheck } from "react-icons/ai";
 import {useState,useEffect,useRef} from 'react'
 import { PiTelegramLogo } from "react-icons/pi";
+import Notification2 from './../Notification2/Notification2' 
 
 const Mission2 = ({visitTele,setVisitTele,coin,setCoin})=>{
 	
@@ -15,6 +16,7 @@ const Mission2 = ({visitTele,setVisitTele,coin,setCoin})=>{
 
 	const btn2 = useRef(null)
 	const btn2Anim = useRef(null)
+	const [openNotific2,setOpenNotific2] = useState(false)
 	
 	// let visitTeleStorage = JSON.parse(localStorage.getItem('visitTele'))
 
@@ -58,14 +60,15 @@ setTimeout(()=>{
 
 	return (
 		<div className={s.content3}>
+		{openNotific2 && <Notification2 text="You received 3000 a-coin" icon={<BsCoin />} openNotific2={openNotific2} setOpenNotific2={setOpenNotific2}/>}
 		<button className={s.btn2} ref={btn2}  onClick={()=>{
 			if(!mission2){
 				setMission2((prevMission2)=>true)
 				localStorage.setItem('mission2',true)
 				setCoin((prevCoin)=>prevCoin + 3000)
 				localStorage.setItem('coin',coin + 3000)
+				setOpenNotific2((prevOpenNotific2)=>true)
 				
-				console.log(tele,mission2)
 
 				}
 

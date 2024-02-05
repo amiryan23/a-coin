@@ -6,6 +6,8 @@ import { BsRocket } from "react-icons/bs";
 import { SlEnergy } from "react-icons/sl";
 import {useState,useEffect,useRef} from 'react'
 import CoinBoost from './CoinBoost/CoinBoost'
+import Notification from './Notification/Notification'
+import notificSound from './../../sound/notificSound1.wav'
 
 
 const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,buyTurbo,setBuyTurbo,buyEnergy,setBuyEnergy,energyPoint,setEnergyPoint,recharghPoint,setRecharghPoint}) =>{
@@ -15,6 +17,7 @@ const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,
 	
 	const [turbo,setTurbo] = useState(turboStorage === null ? 3 : turboStorage )
 	const [boostEnergy,setBoostEnergy] = useState(energyStorage === null ? 3 : energyStorage)
+	const [openNotific,setOpenNotific] = useState(false)
 	
 	
 
@@ -49,11 +52,11 @@ const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,
   			clearTimeout(timerRef4.current)
   			clearTimeout(timerRef3.current)
   			if(turbo < 3){
-  				timerRef3.current = setInterval(()=>{setTurbo((prevTurbo)=>prevTurbo + 1)},60000)
+  				timerRef3.current = setInterval(()=>{setTurbo((prevTurbo)=>prevTurbo + 1)},6000)
   				
   			}
   			if(boostEnergy < 3){
-  				timerRef4.current = setInterval(()=>{setBoostEnergy((prevBoostEnergy)=>prevBoostEnergy + 1)},60000)
+  				timerRef4.current = setInterval(()=>{setBoostEnergy((prevBoostEnergy)=>prevBoostEnergy + 1)},6000)
   				
   			}
 
@@ -98,11 +101,20 @@ const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,
 // 		
 // 	},[buyTurbo,buyEnergy])
 
+	const audio = useRef(null)
+
 	const setTurboBoost = turbo > 0 ? turbo - 1 : turbo
 	const setEnergyBoost = boostEnergy > 0 ? boostEnergy - 1 : boostEnergy
 
 	return (
 		<div className={s.megaContainer} ref={boostAnim3}>
+		<audio className={s.audio} ref={audio}>
+ 	<source src={notificSound} type="audio/wav" />
+		</audio>
+
+			<Notification
+			openNotific={openNotific}
+			setOpenNotific={setOpenNotific}/>
 			<div className={s.content1}><span><NavLink to="/"><GrLinkPrevious/></NavLink></span><span><h3></h3></span><span></span></div>
 			<div className={s.content2}>
 			<span className={s.block1}>Your balance</span>
@@ -119,6 +131,11 @@ const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,
 				setPoint((prevPoint)=>prevPoint + 5)
 				setTurbo((prevTurbo)=>prevTurbo - 1)
 				setBuyTurbo((prevBuyTurbo)=> true)
+				setOpenNotific((prevOpenNotific)=>true)
+				if(audio.current){
+				audio.current.play()
+			}
+
 			}
 			    } else (setPoint(point))
 

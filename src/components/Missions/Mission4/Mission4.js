@@ -5,6 +5,7 @@ import { GrFormClose } from "react-icons/gr";
 import { AiOutlineCheck } from "react-icons/ai";
 import {useState,useEffect,useRef} from 'react'
 import { LuGithub } from "react-icons/lu";
+import Notification2 from './../Notification2/Notification2'
 
 const Mission4 = ({visitTele,setVisitTele,coin,setCoin})=>{
 	
@@ -12,6 +13,7 @@ const Mission4 = ({visitTele,setVisitTele,coin,setCoin})=>{
 	let visitGitHubStorage = JSON.parse(localStorage.getItem('visitGitHub'))
 	const [mission4,setMission4] = useState(mission4Storage ? mission4Storage : false)
 	const [git,setGit] = useState(visitGitHubStorage ? visitGitHubStorage : false)
+	const [openNotific4,setOpenNotific4] = useState(false)
 
 	const btn4 = useRef(null)
 	const btn4Anim = useRef(null)
@@ -58,14 +60,15 @@ setTimeout(()=>{
 
 	return (
 		<div className={s.content5}>
+		{openNotific4 && <Notification2 text="You received 3000 a-coin" icon={<BsCoin />} openNotific4={openNotific4} setOpenNotific4={setOpenNotific4}/>}
 		<button className={s.btn4} ref={btn4}  onClick={()=>{
 			if(!mission4){
 				setMission4((prevMission4)=>true)
 				localStorage.setItem('mission4',true)
 				setCoin((prevCoin)=>prevCoin + 3000)
 				localStorage.setItem('coin',coin + 3000)
+				setOpenNotific4((prevOpenNotific4)=>true)
 				
-				console.log(git,mission4)
 
 				}
 

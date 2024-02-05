@@ -4,12 +4,14 @@ import { RiCoinsFill } from "react-icons/ri"
 import { GrFormClose } from "react-icons/gr";
 import { AiOutlineCheck } from "react-icons/ai";
 import {useState,useEffect,useRef} from 'react'
+import Notification2 from './../Notification2/Notification2'
 
 const Mission1 = ({coin,setCoin})=>{
 		let mission1Storage = JSON.parse(localStorage.getItem('mission1'))
 		let coinStroage = JSON.parse(localStorage.getItem('coin'))
 		const [mission1,setMission1] = useState(mission1Storage ? mission1Storage : false)
 		const [coin1,setCoin1] = useState(coinStroage)
+		const [openNotific,setOpenNotific] = useState(false)
 	const btn1 = useRef(null)
 	const btn1Anim = useRef(null)
 
@@ -40,12 +42,14 @@ const Mission1 = ({coin,setCoin})=>{
 
 	return (
 		<div className={s.content2}>
-		<button ref={btn1}  onClick={()=>{
+		{openNotific && <Notification2 text="You received 2500 a-coin" icon={<BsCoin />} openNotific={openNotific} setOpenNotific={setOpenNotific}/>}
+		<button className={s.btn} ref={btn1}  onClick={()=>{
 				if(coin1 >= 5000 && !mission1){
 				setMission1((prevMission1)=>true)
 				localStorage.setItem('mission1',true)
 				setCoin1((prevCoin)=>prevCoin + 2500)
 				localStorage.setItem('coin',coin1 + 2500)
+				setOpenNotific((prevOpenNotific)=>true)
 			}
 			}}>
 			<span className={s.miniContent1}><BsCoin /></span>

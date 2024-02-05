@@ -152,3 +152,9 @@ background: linear-gradient(0deg, rgba(34,135,195,1) 0%, rgba(46,130,68,1) 100%)
 	flex-direction:column;
 	gap:5px;
 }
+
+.audio {
+	position:absolute;
+	display:none;
+	visibility:hidden;
+}
