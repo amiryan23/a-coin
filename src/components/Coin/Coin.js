@@ -7,6 +7,7 @@ import { FaKey } from "react-icons/fa6";
 import { SlEnergy } from "react-icons/sl";
 import Boost from './../Boost/Boost'
 import Missions from './../Missions/Missions'
+import Promo from './../Promo/Promo'
 import {BrowserRouter, Routes, Route,NavLink} from "react-router-dom"
 
 const Coin = ()=>{
@@ -129,8 +130,9 @@ const boostAnim1 = useRef(null)
 					visitGitHub={visitGitHub}
 					setVisitGitHub={setVisitGitHub}
 					 />} />
+				<Route path="/promocode" element={<Promo />} />
 		</Routes>
-			<div className={s.autor}>Ⓒ amiryann23</div>
+			<div className={s.autor}>Ⓒ amiryan23</div>
 		</div>
 		)
 }

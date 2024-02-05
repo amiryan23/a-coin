@@ -49,11 +49,11 @@ const Boost = ({coin,setCoin,point,setPoint,energy,setEnergy,fullEng,setFullEng,
   			clearTimeout(timerRef4.current)
   			clearTimeout(timerRef3.current)
   			if(turbo < 3){
-  				timerRef3.current = setInterval(()=>{setTurbo((prevTurbo)=>prevTurbo + 1)},6000)
+  				timerRef3.current = setInterval(()=>{setTurbo((prevTurbo)=>prevTurbo + 1)},60000)
   				
   			}
   			if(boostEnergy < 3){
-  				timerRef4.current = setInterval(()=>{setBoostEnergy((prevBoostEnergy)=>prevBoostEnergy + 1)},6000)
+  				timerRef4.current = setInterval(()=>{setBoostEnergy((prevBoostEnergy)=>prevBoostEnergy + 1)},60000)
   				
   			}
 

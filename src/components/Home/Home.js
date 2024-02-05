@@ -8,6 +8,7 @@ import {useState,useEffect,useRef} from 'react'
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 
+
 const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo,buyEnergy,setBuyEnergy,energyPoint,setEnergyPoint,visitTele,setVisitTele,visitGitHub,setVisitGitHub})=>{
 	
 	
@@ -132,13 +133,15 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 
 	const timer1 = useRef(null)
 	const timer2 = useRef(null)
+	const timer3 = useRef(null)
+	const timer4 = useRef(null)
 
 	 const timerRef3 = useRef(null);
 
 
 	useEffect(()=>{
 
-		
+		let timer = true
 
 		if(change && CoinChange.current){
 			clearTimeout(timerRef3.current);
@@ -155,7 +158,7 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 		if(change === true && CoinChange.current){
 			clearTimeout(timerRef3.current);
 			// setTimeout(()=>{setChange(false)},0)
-			if(animation && energy > energyPoint){
+			if(animation && energy > energyPoint && timer){
 			pointAnim1.current.classList.add(s.pointAnim1)
 			// pointAnim1.current.classList.remove(s.miniPoint)
 				// setAnimation((prevAnimation)=>false)
@@ -163,50 +166,57 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 				
 			
 		timer1.current = setTimeout(()=>{
-				
+				if (CoinChange.current){
 				pointAnim1.current.classList.remove(s.pointAnim1)
 				
-				
+				}
 			},500)
 		}
-		} else if(animation2  && energy > energyPoint){
+		} else if(animation2  && energy > energyPoint && timer){
 			pointAnim2.current.classList.add(s.pointAnim2)
 						// 
 						// setAnimation2((prevAnimation2)=>false)
 						// setAnimation3((prevAnimation3)=>true)
 			timer2.current = setTimeout(()=>{
 				
-				
+				if (CoinChange.current){
 				pointAnim2.current.classList.remove(s.pointAnim2)
-				
+				}
 			},500)
-		} else if(animation3  && energy > energyPoint){
+		} else if(animation3  && energy > energyPoint && timer){
 			pointAnim3.current.classList.add(s.pointAnim3)
 				// setAnimation((prevAnimation)=>true)
 				// 
 				// setAnimation3((prevAnimation3)=>false)
-			setTimeout(()=>{
+			timer3.current = setTimeout(()=>{
 				
-				
+				if (CoinChange.current){
 				pointAnim3.current.classList.remove(s.pointAnim3)
-				
+				}
 			},500)
-		} else if(animation4  && energy > energyPoint){
+		} else if(animation4  && energy > energyPoint && timer){
 			pointAnim4.current.classList.add(s.pointAnim4)
 				// setAnimation((prevAnimation)=>true)
 				// 
 				// setAnimation3((prevAnimation3)=>false)
-			setTimeout(()=>{
+			timer4.current = setTimeout(()=>{
 				
-				
+				if (CoinChange.current){
 				pointAnim4.current.classList.remove(s.pointAnim4)
-				
+				}
 			},500)
 		}
 
+		return ()=> {
+			if(!timer){
+					setAnimation((prevAnimation)=>false)
+					setAnimation2((prevAnimation2)=>false)
+					setAnimation3((prevAnimation)=>false)
+					setAnimation4((prevAnimation2)=>false)
+			}
+		}
 
-
-	},[change])
+	},[change,timer1,timer2,timer3,timer4])
  		
 
 // useEffect(()=>{

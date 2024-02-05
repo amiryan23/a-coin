@@ -1,14 +1,37 @@
 .megaContainer {
-	height:580px;
+	height:540px;
 	display:flex;
 	flex-direction:column;
 	justify-content:space-between;
-	gap:25px;
+/*	gap:25px;*/
 	padding:5px;
 	user-select:none;
 	opacity:0;
 	transform:translateY(-200px);
-	overflow:auto;
+/*	overflow-y:scroll;*/
+}
+
+.container{
+	display:flex;
+	flex-direction:column;
+	overflow-y:scroll;
+	gap:35px;
+	padding:5px;
+
+}
+
+.container::-webkit-scrollbar {
+  width: 5px;
+  color:black;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background-color: rgba(256, 256, 256, 0.5);
+}
+
+.container::-webkit-scrollbar-track {
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    background-color: goldenrod;
 }
 
 .boostAnim {

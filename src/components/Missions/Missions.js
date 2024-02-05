@@ -57,6 +57,7 @@ const Missions = ({coin,setCoin,visitTele,setVisitTele,visitGitHub,setVisitGitHu
 			<span><h3></h3></span>
 			<span className={s.miniBlock3}><BsCoin /><h3>{coin}</h3></span>
 			</div>
+			<div className={s.container}>
 			<Mission1 c
 			oin={coin} 
 			setCoin={setCoin}/>
@@ -78,6 +79,7 @@ const Missions = ({coin,setCoin,visitTele,setVisitTele,visitGitHub,setVisitGitHu
 			<Mission5
 			coin={coin} 
 			setCoin={setCoin}  />
+			</div>
 			
 		</div>
 		)
