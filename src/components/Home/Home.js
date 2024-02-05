@@ -246,7 +246,7 @@ const Home = ({energy,setEnergy,coin,setCoin,point,setPoint,buyTurbo,setBuyTurbo
 			<span className={s.miniBlock1}></span>
 			<span className={s.miniBlock2}><h3>aCoin</h3></span>
 			<span className={s.miniBlock3}>
-				<a href="https://t.me/+N2dV3jcwX5llOTUy" target="_blank" title="Telegram" onClick={()=>{
+				<a href="https://t.me/acoin23" target="_blank" title="Telegram" onClick={()=>{
 					setVisitTele((prevVisitTele)=>true)
 					localStorage.setItem('visitTele',true)
 				}}><FaTelegramPlane /></a>
